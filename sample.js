@@ -10,11 +10,17 @@ $(document).ready(function(){ //DOMが完全にロードされてから実行し
                           ];
 
     // さらにこのような記述をすることで、「合計点：」となっている右の部分に合計点が出力される
-    let sum = subject_points[0];
+    /* let sum = subject_points[0];
     sum = sum + subject_points[1];
     sum = sum + subject_points[2];
     sum = sum + subject_points[3];
-    sum = sum + subject_points[4];
+    sum = sum + subject_points[4]; */
+
+    let sum
+    subject_points.reduce(function(a,b) {
+      return  sum = a + b;
+    });
+
     $("#sum_indicate").text(sum);
 
     // ここに、上記を参考にして平均点を出力する処理を書き込む
@@ -79,6 +85,7 @@ $(document).ready(function(){ //DOMが完全にロードされてから実行し
    });
 
    $('#btn-declaration').click(function() {
+     $(".alert").remove(); //最初、id = declaration要素にremoveをかけていたが、それだと動かなかった。（多分、declarationが削除されると.appendが効かなくなる？）
   judgement();
 });
 });
